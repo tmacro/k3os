@@ -10,6 +10,8 @@ RUN apt-get --assume-yes update \
     lz4 \
     rsync \
     xz-utils \
+    git \
+    build-essential \
  && echo 'hfs' >> /etc/initramfs-tools/modules \
  && echo 'hfsplus' >> /etc/initramfs-tools/modules \
  && echo 'nls_utf8' >> /etc/initramfs-tools/modules \
@@ -34,6 +36,24 @@ RUN mkdir -p /usr/src/root && \
     tar xvf /usr/src/kernel.tar.xz && \
     tar xvf /usr/src/kernel-extra.tar.xz && \
     tar xvf /usr/src/kernel-headers.tar.xz
+
+# Add Realtek drivers
+RUN git clone https://github.com/tmacro/r8125.git /usr/src/r8125 \
+ && cd /usr/src/r8125 \
+ && ln -s /usr/src/root/usr/src/linux-headers-${KVERSION}/arch/x86/ /usr/src/root/usr/src/linux-headers-${KVERSION}/arch/amd64 \
+ && make -C /usr/src/root/usr/src/linux-headers-${KVERSION} \
+    INSTALL_MOD_PATH=/usr/src/root \
+    M=/usr/src/r8125/src \
+ && make -C /usr/src/root/usr/src/linux-headers-${KVERSION} \
+    M=/usr/src/r8125/src \
+    INSTALL_MOD_PATH=/usr/src/root \
+    INSTALL_MOD_DIR=kernel/drivers/net/ethernet/realtek \
+    modules_install
+
+#  && cp -r /usr/src/root/usr/src/linux-headers-${KVERSION}/arch/x86/ /usr/src/root/usr/src/linux-headers-${KVERSION}/arch/amd64 \
+#  && BASEDIR="/usr/src/root/lib/modules/${KVERSION}" \
+#     KERNELDIR="/usr/src/root/usr/src/linux-headers-${KVERSION}" \
+#     make -e modules
 
 # Create initrd
 RUN mkdir /usr/src/initrd && \
