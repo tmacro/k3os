@@ -21,7 +21,7 @@ from Kubernetes. Both k3OS and k3s upgrades are handled by the k3OS operator.
 ## Quick Start
 
 Download the ISO from the latest [release](https://github.com/rancher/k3os/releases) and run
-in VMware, VirtualBox, or KVM.  The server will automatically start a single node Kubernetes cluster.
+in VMware, VirtualBox, KVM, or bhyve.  The server will automatically start a single node Kubernetes cluster.
 Log in with the user `rancher` and run `kubectl`.  This is a "live install" running from the ISO media
 and changes will not persist after reboot.
 
@@ -109,7 +109,7 @@ Below is a reference of all cmdline args used to automate installation
 | k3os.install.silent     | false   | true                                              | Ensure no questions will be asked |
 | k3os.install.force_efi  | false   | true                                              | Force EFI installation even when EFI is not detected |
 | k3os.install.device     |         | /dev/vda                                          | Device to partition and format (/dev/sda, /dev/vda) |
-| k3os.install.config_url |         | https://gist.github.com/something                 | The URL of the config to be installed at `/k3os/system/config.yaml` |
+| k3os.install.config_url |         | [https://gist.github.com/.../dweomer.yaml](https://gist.github.com/dweomer/8750d56fb21a3fbc8d888609d6e74296#file-dweomer-yaml) | The URL of the config to be installed at `/k3os/system/config.yaml` |
 | k3os.install.iso_url    |         | https://github.com/rancher/k3os/../k3os-amd64.iso | ISO to download and install from if booting from kernel/vmlinuz and not ISO. |
 | k3os.install.no_format  |         | true                                              | Do not partition and format, assume layout exists already |
 | k3os.install.tty        | auto    | ttyS0                                             | The tty device used for console |
