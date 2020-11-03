@@ -25,6 +25,7 @@ RUN apk --no-cache add \
     hvtools \
     iproute2 \
     iptables \
+    irqbalance \
     iscsi-scst \
     jq \
     kbd-bkeymaps \
@@ -56,6 +57,8 @@ RUN apk --no-cache add \
     util-linux \
     vim \
     wireguard-tools \
+    wpa_supplicant \
+    xfsprogs \
     xz \
  && mv -vf /etc/conf.d/qemu-guest-agent /etc/conf.d/qemu-guest-agent.orig \
  && mv -vf /etc/conf.d/rngd             /etc/conf.d/rngd.orig \
