@@ -50,11 +50,6 @@ RUN git clone https://github.com/tmacro/r8125.git /usr/src/r8125 \
     INSTALL_MOD_DIR=kernel/drivers/net/ethernet/realtek \
     modules_install
 
-#  && cp -r /usr/src/root/usr/src/linux-headers-${KVERSION}/arch/x86/ /usr/src/root/usr/src/linux-headers-${KVERSION}/arch/amd64 \
-#  && BASEDIR="/usr/src/root/lib/modules/${KVERSION}" \
-#     KERNELDIR="/usr/src/root/usr/src/linux-headers-${KVERSION}" \
-#     make -e modules
-
 # Create initrd
 RUN mkdir /usr/src/initrd && \
     rsync -a /usr/src/root/lib/ /lib/ && \
