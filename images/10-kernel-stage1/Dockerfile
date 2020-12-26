@@ -12,14 +12,15 @@ RUN apt-get --assume-yes update \
     xz-utils \
     git \
     build-essential \
+ && echo 'r8152' >> /etc/initramfs-tools/modules \
  && echo 'hfs' >> /etc/initramfs-tools/modules \
  && echo 'hfsplus' >> /etc/initramfs-tools/modules \
  && echo 'nls_utf8' >> /etc/initramfs-tools/modules \
  && echo 'nls_iso8859_1' >> /etc/initramfs-tools/modules
 
 ARG ARCH
-ENV KVERSION=5.4.0-48-generic
-ENV URL=https://github.com/rancher/k3os-kernel/releases/download/5.4.0-48.52-rancher1
+ENV KVERSION=5.4.0-54-generic
+ENV URL=https://github.com/rancher/k3os-kernel/releases/download/5.4.0-54.60-rancher1
 ENV KERNEL_XZ=${URL}/kernel-generic_${ARCH}.tar.xz
 ENV KERNEL_EXTRA_XZ=${URL}/kernel-extra-generic_${ARCH}.tar.xz
 ENV KERNEL_HEADERS_XZ=${URL}/kernel-headers-generic_${ARCH}.tar.xz
