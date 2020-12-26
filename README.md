@@ -1,7 +1,4 @@
-
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/rancher/k3os)
-![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/rancher/k3os?include_prereleases&label=release&sort=semver)
-
+> This is a fork of https://github.com/rancher/k3os/
 # k3OS
 k3OS is a Linux distribution designed to remove as much OS maintenance
 as possible in a Kubernetes cluster.  It is specifically designed to only
